@@ -18,16 +18,24 @@ function carregarTarefas() {
 
         tarefas.forEach((tarefa, index) => {
             let item = document.createElement("li");
-            
+
+            if (tarefa.estado === true) {
+                item.classList.add("concluida");
+            }
+
+            item.onclick = function() {
+                atualizarTarefa(index);
+            };
+
             let texto = document.createElement("span");
             texto.innerText = tarefa.nome;
 
             let botaoApagar = document.createElement("button");
             botaoApagar.innerText = "🗑️";
             botaoApagar.className = "btn-delete";
-            botaoApagar.title = "Apagar tarefa";
             
-            botaoApagar.onclick = function() {
+            botaoApagar.onclick = function(event) {
+                event.stopPropagation(); 
                 deletarTarefa(index);
             };
 
@@ -64,4 +72,18 @@ function deletarTarefa(id) {
         carregarTarefas();
     })
     .catch(erro => console.error(erro));
+}
+
+if (tarefa.estado === true) {
+    item.classList.add("concluida");
+}
+
+function atualizarTarefa(id) {
+    fetch(`${API_URL}/${id}`, {
+        method: "PUT"
+    })
+    .then(() => {
+        carregarTarefas(); 
+    })
+    .catch(erro => console.error("Erro ao atualizar:", erro));
 }
