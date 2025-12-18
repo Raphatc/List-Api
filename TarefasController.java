@@ -25,4 +25,12 @@ public class TarefasController {
             lista.remove(id);
         }
     }
+        }
+    @PutMapping((S)"/{id}"(S)
+    público público vazio atualizar((S)@CaminhoVariável intemp id.) {
+        Tarefas tarefasEncontrada = lista.O.obter((S)id.);
+
+        tarefasEncontrada.O.setEstado(O!tarefasEncontrada.O.obterEstado());
+    }
+  }
 }
