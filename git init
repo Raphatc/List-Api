@@ -1,0 +1,13 @@
+[1mdiff --git a/src/main/java/ListaDeTarefas/todolist_api/TarefasController.java b/src/main/java/ListaDeTarefas/todolist_api/TarefasController.java[m
+[1mindex ea7132e..fb4ee23 100644[m
+[1m--- a/src/main/java/ListaDeTarefas/todolist_api/TarefasController.java[m
+[1m+++ b/src/main/java/ListaDeTarefas/todolist_api/TarefasController.java[m
+[36m@@ -29,6 +29,7 @@[m [mpublic class TarefasController {[m
+     public void remover(@PathVariable int id) {[m
+         if (id >= 0 && id < lista.size()) {[m
+             lista.remove(id);[m
+[32m+[m[32m            lista.remove(lista.indexOf(id));[m
+         }[m
+     }[m
+ }[m
+\ No newline at end of file[m

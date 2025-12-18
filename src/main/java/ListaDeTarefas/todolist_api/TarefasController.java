@@ -29,6 +29,12 @@ public class TarefasController {
     public void remover(@PathVariable int id) {
         if (id >= 0 && id < lista.size()) {
             lista.remove(id);
-        }
+       }
+    }
+    @PutMapping("/{id}")
+    public void atualizar(@PathVariable int id) {
+        Tarefas tarefasEncontrada = lista.get(id);
+
+        tarefasEncontrada.setEstado(!tarefasEncontrada.getEstado());
     }
 }
